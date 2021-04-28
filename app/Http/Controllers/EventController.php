@@ -18,7 +18,6 @@ class EventController extends Controller
 
     }
 
-
     public function show($id) {
            
         // Busca um evento no banco através de seu id.
@@ -43,6 +42,9 @@ class EventController extends Controller
         $event->private = $request->private;
         $event->description = $request->description;
 
+        // Recebe JSON 
+        $event->items = $request->items;
+
         // Image upload
 
         if($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -56,6 +58,10 @@ class EventController extends Controller
             $requestImage->move(public_path('img/events'), $imageName);
 
             $event->image = $imageName;
+
+        }else{
+
+            $event->image = 'default.jpg';
 
         }
 

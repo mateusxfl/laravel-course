@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    // Informa que items é um array.
+    protected $casts = [
+        'items' => 'array'
+    ];
 }
