@@ -23,7 +23,7 @@
                         <img src="/img/banner.jpg" class="img-fluid" alt="{{ $event->title }}">
                     @endif
                     <div class="card-body">
-                        <p class="card-date">10/09/2020</p>
+                        <p class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</p>
                         <h5 class="card-title">{{ $event->title }}</h5>
                         <p class="card-participants">X Participantes</p>
                         <a href="/events/{{ $event->id }}" class="btn btn-primary">Saber mais</a>
@@ -31,6 +31,11 @@
                 </div>
             @endforeach
         </div>
+
+        @if(count($events) == 0)
+            <h2>Não há eventos disponíveis.</h2>
+        @endif
+    
     </div>
 
 @endsection

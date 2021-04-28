@@ -13,4 +13,7 @@ class Event extends Model
     protected $casts = [
         'items' => 'array'
     ];
+
+    // Informa que date é um campo de data.
+    protected $date = ['date'];
 }
