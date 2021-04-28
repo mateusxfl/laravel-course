@@ -7,8 +7,12 @@
   <div class="col-md-10 offset-md-1">
     <div class="row">
       <div id="image-container" class="col-md-6">
-        <img src="/img/events/{{ $event->image }}" class="img-fluid" alt="{{ $event->title }}">
-      </div>
+        @if($event->image != "default.jpg")
+          <img src="/img/events/{{ $event->image }}" class="img-fluid" alt="{{ $event->title }}">
+        @else
+          <img src="/img/banner.jpg" class="img-fluid" alt="{{ $event->title }}">
+        @endif
+        </div>
       <div id="info-container" class="col-md-6">
         <h1>{{ $event->title }}</h1>
         <p class="event-city"><ion-icon name="location-outline"></ion-icon> {{ $event->city }}</p>
