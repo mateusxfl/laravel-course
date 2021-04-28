@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
 
+// Lista todos os eventos.
 Route::get('/', [EventController::class, 'index']);
 
+// Lista um evento em específico.
+Route::get('/events/{id}', [EventController::class, 'show']);
+
+// Formulário de criação de eventos.
 Route::get('/events/create', [EventController::class, 'create']);
+
+// Insere eventos no banco de dados.
+Route::post('/events', [EventController::class, 'store']);
