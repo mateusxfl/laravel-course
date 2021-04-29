@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
 // Lista todos os eventos.
 Route::get('/', [EventController::class, 'index']);
 
