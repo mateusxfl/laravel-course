@@ -11,10 +11,19 @@ class EventController extends Controller
     // Action padrão da rota events.
     public function index() {
 
-        // Pega todos os eventos do banco de dados.
-        $events = Event::all();
+        $search = request('search');
 
-        return view('welcome', ['events' => $events]);
+        if($search) {
+            // Pega os eventos de acordo com a pequisa.
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        }else{
+            // Pega todos os eventos do banco de dados.
+            $events = Event::all();
+        }
+
+        return view('welcome', ['events' => $events, 'search' => $search]);
 
     }
 
