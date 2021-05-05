@@ -16,4 +16,12 @@ class Event extends Model
 
     // Informa que date é um campo de data.
     protected $date = ['date'];
+
+    // Usuário dono do evento.
+    public function user() {
+
+        // "Pertence a alguem"
+        return $this->belongsTo('App\Models\User');
+
+    }
 }

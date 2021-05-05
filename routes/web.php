@@ -15,19 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
 // Lista todos os eventos.
 Route::get('/', [EventController::class, 'index']);
 
 // Formulário de criação de eventos.
-Route::get('/events/create', [EventController::class, 'create']);
+Route::get('/events/create', [EventController::class, 'create'])->middleware('auth'); // Não funciona pq ???
 
 // Lista um evento em específico.
 Route::get('/events/{id}', [EventController::class, 'show']);
 
 // Insere eventos no banco de dados.
 Route::post('/events', [EventController::class, 'store']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
